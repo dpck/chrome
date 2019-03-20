@@ -1,6 +1,6 @@
 {
   "name": "@contexts/chrome",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The Remote Chrome Context For Testing Like Webdriver.",
   "main": "build/index.js",
   "module": "src/index.js",
