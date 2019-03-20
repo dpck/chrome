@@ -1,6 +1,6 @@
 # @contexts/chrome
 
-[![npm version](https://badge.fury.io/js/@contexts/chrome.svg)](https://npmjs.org/package/@contexts/chrome)
+[![npm version](https://badge.fury.io/js/%40contexts%2Fchrome.svg)](https://npmjs.org/package/@contexts/chrome)
 
 `@contexts/chrome` is The Remote Chrome Context For Testing Like Webdriver.
 
@@ -12,8 +12,11 @@ yarn add -E @contexts/chrome
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`chrome(arg1: string, arg2?: boolean)`](#mynewpackagearg1-stringarg2-boolean-void)
-  * [`Config`](#type-config)
+- [class `ChromeContext`](#class-chromecontext)
+  * [`navigate(url: string)`](#navigateurl-string-void)
+  * [`evaluate(expression: string, json?: boolean)`](#evaluateexpression-stringjson-boolean-void)
+  * [`Page()`](#page-void)
+  * [`Network()`](#network-void)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
@@ -23,43 +26,61 @@ yarn add -E @contexts/chrome
 The package is available by importing its default function:
 
 ```js
-import chrome from '@contexts/chrome'
+import ChromeContext from '@contexts/chrome'
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
-## `chrome(`<br/>&nbsp;&nbsp;`arg1: string,`<br/>&nbsp;&nbsp;`arg2?: boolean,`<br/>`): void`
+## class `ChromeContext`
 
-Call this function to get the result you want.
-
-__<a name="type-config">`Config`</a>__: Options for the program.
-
-|   Name    |   Type    |    Description    | Default |
-| --------- | --------- | ----------------- | ------- |
-| shouldRun | _boolean_ | A boolean option. | `true`  |
-| __text*__ | _string_  | A text to return. | -       |
+The class can be used either as a context, or as a persistent context in [_Zoroaster_](https://github.com/contexttesting/zoroaster) testing framework to eliminate the need to manually write set-up and tear-down routines in tests. The context will connect to a headless chrome and expose API for testing.
 
 ```js
-/* yarn example/ */
-import chrome from '@contexts/chrome'
+import { ok } from 'zoroaster/assert'
+import ChromeContext from '@contexts/chrome'
 
-(async () => {
-  const res = await chrome({
-    text: 'example',
-  })
-  console.log(res)
-})()
-```
-```
-example
+/** @type {Object.<string, (c: ChromeContext)>} */
+const T = {
+  persistentContext: ChromeContext,
+  async 'navigates to a web page'({ Page, evaluate, navigate }) {
+    await navigate('about:blank')
+    await Page.loadEventFired()
+    const { value } = await evaluate('window.navigator.userAgent', false)
+    ok(/HeadlessChrome/.test(value))
+  },
+}
+
+export default T
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true" width="15"></a></p>
+
+### `navigate(`<br/>&nbsp;&nbsp;`url: string,`<br/>`): void`
+
+Navigates to a webpage.
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
+
+### `evaluate(`<br/>&nbsp;&nbsp;`expression: string,`<br/>&nbsp;&nbsp;`json?: boolean,`<br/>`): void`
+
+Evaluates an expression and returns the result. By default, the outcome will be serialised on the client and deserialised on the receiving end by the context using JSON to enable passing objects. To disable that, the `json` argument should be set to `false`.
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
+
+### `Page(): void`
+
+The enabled page.
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
+
+### `Network(): void`
+
+The enabled network.
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/6.svg?sanitize=true"></a></p>
 
 ## Copyright
 
-(c) [Art Deco][1] 2019
-
-[1]: https://artd.eco/depack
+<table><tr><th><a href="https://artd.eco"><img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" /></a></th><th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://artd.eco/depack">Depack</a>2019</th><th><a href="https://www.technation.sucks" title="Tech Nation Visa"><img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif" alt="Tech Nation Visa" /></a></th><th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th></tr></table>
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>

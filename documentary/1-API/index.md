@@ -3,23 +3,50 @@
 The package is available by importing its default function:
 
 ```js
-import chrome from '@contexts/chrome'
+import ChromeContext from '@contexts/chrome'
 ```
 
 %~%
 
-```## chrome
+## class `ChromeContext`
+
+The class can be used either as a context, or as a persistent context in [_Zoroaster_](https://github.com/contexttesting/zoroaster) testing framework to eliminate the need to manually write set-up and tear-down routines in tests. The context will connect to a headless chrome and expose API for testing.
+
+%EXAMPLE: test/spec/default.js, ../../src => @contexts/chrome%
+
+%~ width="15"%
+
+```### navigate
 [
-  ["arg1", "string"],
-  ["arg2?", "boolean"]
+  ["url", "string"]
 ]
 ```
 
-Call this function to get the result you want.
+Navigates to a webpage.
 
-%TYPEDEF types/index.xml%
+%~ width="15"%
 
-%EXAMPLE: example/example.js, ../src => @contexts/chrome%
-%FORK example example/example%
+```### evaluate
+[
+  ["expression", "string"],
+  ["json?", "boolean"]
+]
+```
+
+Evaluates an expression and returns the result. By default, the outcome will be serialised on the client and deserialised on the receiving end by the context using JSON to enable passing objects. To disable that, the `json` argument should be set to `false`.
+
+%~ width="15"%
+
+```### Page
+```
+
+The enabled page.
+
+%~ width="15"%
+
+```### Network
+```
+
+The enabled network.
 
 %~%
