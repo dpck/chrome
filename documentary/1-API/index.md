@@ -16,7 +16,7 @@ The class can be used either as a context, or as a persistent context in [_Zoroa
 
 %~ width="15"%
 
-```### navigate
+```### async navigate
 [
   ["url", "string"]
 ]
@@ -26,7 +26,7 @@ Navigates to a webpage.
 
 %~ width="15"%
 
-```### evaluate
+```### async evaluate
 [
   ["expression", "string"],
   ["json?", "boolean"]

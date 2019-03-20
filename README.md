@@ -13,8 +13,8 @@ yarn add -E @contexts/chrome
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
 - [class `ChromeContext`](#class-chromecontext)
-  * [`navigate(url: string)`](#navigateurl-string-void)
-  * [`evaluate(expression: string, json?: boolean)`](#evaluateexpression-stringjson-boolean-void)
+  * [`async navigate(url: string)`](#async-navigateurl-string-void)
+  * [`async evaluate(expression: string, json?: boolean)`](#async-evaluateexpression-stringjson-boolean-void)
   * [`Page()`](#page-void)
   * [`Network()`](#network-void)
 - [Copyright](#copyright)
@@ -55,13 +55,13 @@ export default T
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true" width="15"></a></p>
 
-### `navigate(`<br/>&nbsp;&nbsp;`url: string,`<br/>`): void`
+### `async navigate(`<br/>&nbsp;&nbsp;`url: string,`<br/>`): void`
 
 Navigates to a webpage.
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
 
-### `evaluate(`<br/>&nbsp;&nbsp;`expression: string,`<br/>&nbsp;&nbsp;`json?: boolean,`<br/>`): void`
+### `async evaluate(`<br/>&nbsp;&nbsp;`expression: string,`<br/>&nbsp;&nbsp;`json?: boolean,`<br/>`): void`
 
 Evaluates an expression and returns the result. By default, the outcome will be serialised on the client and deserialised on the receiving end by the context using JSON to enable passing objects. To disable that, the `json` argument should be set to `false`.
 
