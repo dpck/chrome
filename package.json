@@ -30,7 +30,13 @@
   },
   "keywords": [
     "chrome",
-    "contexts"
+    "contexts",
+    "context",
+    "testing",
+    "headless",
+    "remote",
+    "frontend",
+    "test"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
