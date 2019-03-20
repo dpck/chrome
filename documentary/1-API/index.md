@@ -37,15 +37,13 @@ Evaluates an expression and returns the result. By default, the outcome will be 
 
 %~ width="15"%
 
-```### Page
-```
+### get `Page`
 
 The enabled page.
 
 %~ width="15"%
 
-```### Network
-```
+### get `Network`
 
 The enabled network.
 

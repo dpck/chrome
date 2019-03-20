@@ -15,8 +15,8 @@ yarn add -E @contexts/chrome
 - [class `ChromeContext`](#class-chromecontext)
   * [`async navigate(url: string)`](#async-navigateurl-string-void)
   * [`async evaluate(expression: string, json?: boolean)`](#async-evaluateexpression-stringjson-boolean-void)
-  * [`Page()`](#page-void)
-  * [`Network()`](#network-void)
+  * [get `Page`](#get-page)
+  * [get `Network`](#get-network)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
@@ -67,13 +67,13 @@ Evaluates an expression and returns the result. By default, the outcome will be 
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true" width="15"></a></p>
 
-### `Page(): void`
+### get `Page`
 
 The enabled page.
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true" width="15"></a></p>
 
-### `Network(): void`
+### get `Network`
 
 The enabled network.
 
