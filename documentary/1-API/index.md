@@ -26,7 +26,7 @@ Navigates to a webpage.
 
 %~ width="15"%
 
-```### async evaluate
+```### async evaluate => *
 [
   ["expression", "string"],
   ["json?", "boolean"]

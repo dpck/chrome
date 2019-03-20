@@ -14,7 +14,7 @@ yarn add -E @contexts/chrome
 - [API](#api)
 - [class `ChromeContext`](#class-chromecontext)
   * [`async navigate(url: string)`](#async-navigateurl-string-void)
-  * [`async evaluate(expression: string, json?: boolean)`](#async-evaluateexpression-stringjson-boolean-void)
+  * [`async evaluate(expression: string, json?: boolean): *`](#async-evaluateexpression-stringjson-boolean-)
   * [get `Page`](#get-page)
   * [get `Network`](#get-network)
 - [Copyright](#copyright)
@@ -61,7 +61,7 @@ Navigates to a webpage.
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true" width="15"></a></p>
 
-### `async evaluate(`<br/>&nbsp;&nbsp;`expression: string,`<br/>&nbsp;&nbsp;`json?: boolean,`<br/>`): void`
+### `async evaluate(`<br/>&nbsp;&nbsp;`expression: string,`<br/>&nbsp;&nbsp;`json?: boolean,`<br/>`): *`
 
 Evaluates an expression and returns the result. By default, the outcome will be serialised on the client and deserialised on the receiving end by the context using JSON to enable passing objects. To disable that, the `json` argument should be set to `false`.
 
