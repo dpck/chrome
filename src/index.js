@@ -60,6 +60,12 @@ export default class RemoteChrome {
     return val
   }
   /**
+   * Goes to the web page.
+   */
+  async navigate(url) {
+    return this.Page.navigate({ url })
+  }
+  /**
    * Takes a screenshot and returns a buffer.
    * @param {string} [selector] An optional selector to get the bounding box to capture.
    */
